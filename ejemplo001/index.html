@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>Angular JS</title>
+  <meta charset="utf-8">
+<body>
+  <h1>Mi Agenda</h1>
+  <div ng-controller="MyAppController as agenda">
+      <table class="border">
+          <tr>
+              <th>Apellido</th>
+              <th>Nombre</th>
+              <th>Télefono</th>
+          </tr>
+          <tr>
+              <td>{{ agenda.entry.last_name}}</td>
+              <td>{{ agenda.entry.name}}</td>
+              <td>{{ agenda.entry.phone}}</td>
+          </tr>
+      </table>
+  </div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
