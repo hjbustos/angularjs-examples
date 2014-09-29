@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <title>Angular JS</title>
+  <meta charset="utf-8">
+  <style type="text/css" media="screen">
+    #itemForm { border: 1px solid #000000; padding: 5px 10px;}
+    #previsualizacion { background-color: #808080;
+      margin: 10px auto 5px auto;
+      height: 100px;
+      min-height: 100px;
+      height: auto;
+      padding: 5px 10px;
+    }
+    span.prioridad { font-weight: bold; }
+    span.prioridad.prioridad1 { color: red; }
+    span.prioridad.prioridad2 { color: #ffff00; background-color: #808080 }
+    span.prioridad.prioridad3 { color: orangered; }
+    span.prioridad.prioridad4 { color: rgb(255, 165, 0); }
+    span.prioridad.prioridad5 { color: coral; }
+  </style>
+</head>
+<body>
+
+  <h1>To do list</h1>
+
+  <div ng-controller="MyAppController as todoList">
+
+    <form id="itemForm" name="itemForm" ng-submit="todoList.addItem(todoList.list)">
+      <h2>Nuevo item</h2>
+      <div>
+        <label for="titulo">Titulo</label>
+        <input id="titulo" name="titulo" ng-model="todoList.item.titulo">
+      </div>
+      <div>
+        <label for="prioridad">Prioridad</label>
+        <select id="prioridad" name="prioridad" ng-model="todoList.item.prioridad">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div>
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" ng-model="todoList.item.descripcion"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="Agregar"/>
+      </div>
+      <div id="previsualizacion">
+          <h2>Titulo: {{ todoList.item.titulo | uppercase}}</h2>
+          <div>Prioridad: <span class="prioridad {{ 'prioridad' + todoList.item.prioridad}}">{{ todoList.item.prioridad }}</span></div>
+          <p>Descripción: {{ todoList.item.descripcion}}</p>
+      </div>
+    </form>
+    
+    <ul>
+        <li ng-repeat="item in todoList.list">
+            <h2>{{ item.titulo | uppercase}}</h2>
+            <div>Prioridad: <span class="prioridad {{ 'prioridad' + item.prioridad}}">{{ item.prioridad }}</span></div>
+            <p>{{ item.descripcion}}</p>
+        </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
